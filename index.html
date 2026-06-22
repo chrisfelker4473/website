@@ -417,6 +417,11 @@
     text-align:center; padding:40px 28px 56px;
     font-size:13.5px; color:var(--ink-soft);
   }
+  .site-counter{
+    display:block; margin-top:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--ink-soft); opacity:0.6;
+  }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 900px){
@@ -666,7 +671,7 @@
           <h2>Let's talk about your team.</h2>
         </div>
         <div class="contact-links">
-          <a href="mailto:chrisfelker@icloud.com">
+          <a href="mailto:chrisfelker@icloud.com?subject=Lets%20Connect!">
             <span><span class="label">Email</span>chrisfelker@icloud.com</span>
           </a>
           <a href="www.linkedin.com/in/chrisfelker" target="_blank" rel="noopener noreferrer">
@@ -684,10 +689,15 @@
 
 <footer>
   © <span id="year"></span> Christopher Felker. Built with care.
+  <span class="site-counter">visitors: <span id="visit-count"></span></span>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const count = (parseInt(localStorage.getItem('siteVisits'), 10) || 1056) + 1;
+  localStorage.setItem('siteVisits', count);
+  document.getElementById('visit-count').textContent = count.toLocaleString();
 
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
